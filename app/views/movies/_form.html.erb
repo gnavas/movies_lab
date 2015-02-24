@@ -1,5 +1,24 @@
-<%= simple_form_for @movie do |f| %>
-  <%= f.input :title %>
-  <%= f.input :year %>
-  <%= f.button :submit %>
-<% end %>
+
+<%= simple_form_for(@movie, defaults: { error_html: { id: 'error' } }, :html => { :class => "form-inline"}) do |f|%>
+<div class = row>
+<div class="col-md-2 col-md-offset-2">
+  <%= f.input :title%>
+<br>
+</div>
+<div class = "col-md-1"></div>
+  <div class="col-md-2">
+  <%= f.input :year%>
+<br>
+  </div>
+  </div>
+  <br>
+  <div class ="row">
+  <div class = "col-md-2 col-md-offset-2">
+  <%=  link_to('Back to Movies', movies_path, {class: "btn btn-primary"}) %>
+  </div>
+  <div class ="col-md-3 col-md-offset-1">
+  <%= f.submit "Submit", class: 'btn btn-primary' %>
+  </div>
+  </div>
+  <% end %>
+</div>

@@ -13,6 +13,7 @@ class ActorsController < ApplicationController
 
   def show
     @actor = Actor.find(params[:id])
+    @movies = Movie.all
   end
 
   def create
@@ -26,7 +27,7 @@ class ActorsController < ApplicationController
 
   def update
     @actor = Actor.find(params[:id])
-    @actor = Actor.update_attributes actor_params
+    @actor.update_attributes actor_params
     if @actor.save
       redirect_to actor_path(@actor)
     else

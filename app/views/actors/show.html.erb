@@ -1,4 +1,37 @@
-<h1>Actors#show</h1>
-<p>Find me in app/views/actors/show.html.erb</p>
+<%= render "shared/navbar" %>
+<Br><Br>
+<div class="container-fluid">
 
-<p><%=@actor.name%></p>
+<h2 class="text-center"><%=@actor.name%> Movies</h2>
+<div class="row">
+<div class ="col-md-10 col-md-offset-1">
+<table class ="table table-striped">
+<tr>
+<th>Title</th>
+<th>Year</th>
+<th>Delete Movie</th>
+</tr>
+<% @actor.movies.each do |movie|  %>
+  <tr >
+    <td ><%=movie.title %></td>
+     <td ><%=movie.year %></td>
+    <td><%= link_to('Delete',"/movie_actors/#{params[:id]}/delete/#{movie.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn-xs btn-danger")%></td>
+  </tr>
+  <% end %>
+</table>
+
+<h1>Add Movie</h1>
+<form action = "/movie_actors/<%=params[:id] %>" method = "post">
+<select class="form-control" name="movie_id">
+<% @movies.each do |movie|  %>
+  <option value=<%= movie.id %>><%= movie.title %></option>
+<% end %>
+</select>
+<button type="submit" class="btn btn-default">Add Movie</button>
+</form>
+<br>
+<div class="row">
+  <div class = "col-md-4 col-md-offset-5">
+  <%=  link_to('Back to Actors', actors_path, {class: "btn btn-primary"}) %>
+  </div>
+  </div>
