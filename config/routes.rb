@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :movies
   resources :actors
 
+  post '/actor_movies/:id', to: 'actor_movies#create', as: 'create_actor'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
