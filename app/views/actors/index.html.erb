@@ -1,0 +1,9 @@
+<h1>Actors#index</h1>
+<p>Find me in app/views/actors/index.html.erb</p>
+
+
+<% @actors.each do |actor| %>
+<p><%=actor.name%> <%=link_to("Edit",edit_actor_path(actor))%> <%= link_to("More Info",actor_path(actor)) %> <%= link_to("Delete",actor_path(actor), method: :delete)%></p>
+<% end%>
+
+<p><%=link_to("Add Actor",new_actor_path)%></p>

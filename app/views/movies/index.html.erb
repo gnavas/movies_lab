@@ -1,0 +1,7 @@
+<h1>Movies#index</h1>
+<p>Find me in app/views/movies/index.html.erb</p>
+
+<% @movies.each do |movie| %>
+<p><%=movie.title%> <%=movie.year%> <%=link_to("Edit",edit_movie_path(movie))%> <%= link_to("More Info",movie_path(movie)) %> <%= link_to("Delete",movie_path(movie), method: :delete)%></p>
+<% end%>
+<p><%=link_to("Add Movie",new_movie_path)%></p>
