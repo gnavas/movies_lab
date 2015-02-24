@@ -23,4 +23,11 @@ skip_before_action :verify_authenticity_token
     redirect_to actor_path(@actor)  
     end
 
+    def delete
+    @movie = Movie.find(params[:id])
+    actor = ActorMovie.find_by(actor_id: params[:actor_id])
+    actor.destroy
+    redirect_to movie_path(@movie)  
+    end
+
 end

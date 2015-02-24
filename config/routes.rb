@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/actor_movies/:id', to: 'actor_movies#create', as: 'create_actor'
   post '/movie_actors/:id', to: 'actor_movies#update', as: 'create_movie'
   delete '/movie_actors/:id/delete/:movie_id', to:'actor_movies#destroy', as: 'destroy_movie'
-
+  delete '/actor_movies/:id/delete/:actor_id', to:'actor_movies#delete', as: 'destroy_actor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

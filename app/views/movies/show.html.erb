@@ -26,10 +26,12 @@
 <table class ="table table-striped">
 <tr>
 <th>Actor</th>
+<th>Delete</th>
 </tr>
 <% @movie.actors.each do |actor|  %>
   <tr >
     <td ><%=actor.name %></td>
+    <td><%= link_to('Delete',"/actor_movies/#{params[:id]}/delete/#{actor.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn-xs btn-danger")%></td>
   </tr>
   <% end %>
 </table>
@@ -38,7 +40,9 @@
 <form action = "/actor_movies/<%=params[:id] %>" method = "post">
 <select class="form-control" name="actor_id">
 <% @actors.each do |actor|  %>
+<% if @movie.actors.exists?(id: actor.id) == false %>
   <option value=<%= actor.id %>><%= actor.name %></option>
+<%end %>
 <% end %>
 </select>
 <button type="submit" class="btn btn-default">Add Actor</button>
