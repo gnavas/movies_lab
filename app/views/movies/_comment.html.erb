@@ -1,0 +1,24 @@
+<h2 class="text-center">Movie Comments</h2>
+ <div class="row">
+        <div class ="col-md-10 col-md-offset-1">
+          <table class ="table table-striped">
+            <tr>
+              <th>Movie</th>
+              <th>Comment</th>
+            </tr>
+            <% @movie.comments.each do |comment|  %>
+            <tr >
+              <td ><%= comment.commentable.title%></td>
+              <td ><%=comment.content %></td>
+            </tr>
+            <% end %>
+          </table>     
+
+<h2 class="text-center">Add Comment</h2>
+     <%= form_for Comment.new, url: create_movie_comment_path("movie",@movie.id), method: :post do |form| %>
+     <p>Comment:</p>
+      <%= form.text_area :content, :rows => 5 %>
+      <%= form.hidden_field :commentable_type, :value => "Movie" %>
+      <%= form.hidden_field :commentable_id, :value => @movie.id %>
+    <p><%= submit_tag "Add comment" %></p>
+<% end %>

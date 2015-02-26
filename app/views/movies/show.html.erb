@@ -1,50 +1,55 @@
 <Br><Br>
-<%= render "shared/navbar" %>
-<div class="container-fluid">
+  <%= render "shared/navbar" %>
+  <div class="container-fluid">
 
-<h2 class = "text-center"> <%= @movie.title%> </h2>
+    <h2 class = "text-center"> <%= @movie.title%> </h2>
 
-<!-- <table style = "border: 1px solid black; border-collapse: collapse"> -->
-<div class="row">
-<div class ="col-md-6 col-md-offset-3">
-<table class ="table table-striped">
-<tr>
-<th>Movie Title</th>
-<th>Movie Year</th>
-</tr>
-  <tr >
-    <td ><%=@movie.title  %></td>
-    <td ><%= @movie.year %></td>
-  </tr>
-</table>
-</div>
-</div>
-<br>
-<h2 class="text-center">Movie Actors</h1>
-<div class="row">
-<div class ="col-md-10 col-md-offset-1">
-<table class ="table table-striped">
-<tr>
-<th>Actor</th>
-<th>Delete</th>
-</tr>
-<% @movie.actors.each do |actor|  %>
-  <tr >
-    <td ><%=actor.name %></td>
-    <td><%= link_to('Delete',"/actor_movies/#{params[:id]}/delete/#{actor.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn-xs btn-danger")%></td>
-  </tr>
-  <% end %>
-</table>
+    <!-- <table style = "border: 1px solid black; border-collapse: collapse"> -->
+    <div class="row">
+      <div class ="col-md-6 col-md-offset-3">
+        <table class ="table table-striped">
+          <tr>
+            <th>Movie Title</th>
+            <th>Movie Year</th>
+          </tr>
+          <tr >
+            <td ><%=@movie.title  %></td>
+            <td ><%= @movie.year %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br>
+    <h2 class="text-center">Movie Actors</h1>
+      <div class="row">
+        <div class ="col-md-10 col-md-offset-1">
+          <table class ="table table-striped">
+            <tr>
+              <th>Actor</th>
+              <th>Delete</th>
+            </tr>
+            <% @movie.actors.each do |actor|  %>
+            <tr >
+              <td ><%=actor.name %></td>
+              <td><%= link_to('Delete',"/actor_movies/#{params[:id]}/delete/#{actor.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn-xs btn-danger")%></td>
+            </tr>
+            <% end %>
+          </table>
 
-<h1>Add Actor</h1>
-<form action = "/actor_movies/<%=params[:id] %>" method = "post">
-<select class="form-control" name="actor_id">
-<% @actors.each do |actor|  %>
-<% if @movie.actors.exists?(id: actor.id) == false %>
-  <option value=<%= actor.id %>><%= actor.name %></option>
-<%end %>
-<% end %>
-</select>
-<button type="submit" class="btn btn-default">Add Actor</button>
-</form>
+          <h1>Add Actor</h1>
+          <form action = "/actor_movies/<%=params[:id] %>" method = "post">
+            <select class="form-control" name="actor_id">
+              <% @actors.each do |actor|  %>
+              <% if @movie.actors.exists?(id: actor.id) == false %>
+              <option value=<%= actor.id %>><%= actor.name %></option>
+              <%end %>
+              <% end %>
+            </select>
+            <button type="submit" class="btn btn-default">Add Actor</button>
+          </form>
+<%= render 'comment' %>
+    
+
+
+
 

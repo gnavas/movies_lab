@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+
   root 'movies#index'
-  resources :movies
-  resources :actors
+  resources :movies 
+  resources :actors 
+
+  post '/movies/add_comment', to: 'comments#create_movie_comment', as: 'create_movie_comment'
+  post '/actors/add_comment', to: 'comments#create_actor_comment', as: 'create_actor_comment'
+  
 
   post '/actor_movies/:id', to: 'actor_movies#create', as: 'create_actor'
   post '/movie_actors/:id', to: 'actor_movies#update', as: 'create_movie'
