@@ -1,4 +1,9 @@
 <%= render "shared/navbar" %>
+<div class = "col-md-1 col-md-offset-10">
+</div>
+<h2 class = "text-center"><% flash.each do |key,value| %>
+<p><%= value %></p>
+<% end %></h2>
 <div class="container-fluid">
   <br><Br>
   <h2 class = "text-center">Movies:</h2>

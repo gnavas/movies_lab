@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
+  get '/login', to: 'access#login', as: "login"
+  get '/signup', to: 'access#signup', as: "signup"
+  post '/signup', to: 'access#create', as: "users"
+  post '/login', to: 'access#attempt_login', as: "attempt_login"
+  delete '/logout', to: 'access#logout', as: 'logout'
+
   root 'movies#index'
   resources :movies 
   resources :actors 
+  resources :access
 
   post '/movies/add_comment', to: 'comments#create_movie_comment', as: 'create_movie_comment'
   post '/actors/add_comment', to: 'comments#create_actor_comment', as: 'create_actor_comment'

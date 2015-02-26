@@ -1,0 +1,24 @@
+<%= render "shared/navbar" %>
+
+<%= simple_form_for @user, defaults: { error_html: { id: 'error' } }, :html => { :class => "form-inline"} do |f|%>
+<div class = row>
+  <div class="col-md-4 col-md-offset-4">
+    <%= f.input :username, required: true%>
+    <%= f.input :password, required: true %>
+    <br>
+  </div>
+</div>
+<br>
+<div class ="row">
+  <div class ="col-md-4 col-md-offset-6">
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
+  </div>
+</div>
+<% end %>
+<Br>
+  <div class="row">
+    <div class = "col-md-4 col-md-offset-5">
+      <%=  link_to('Back to Home', movies_path, {class: "btn btn-primary"}) %>
+    </div>
+  </div>
+</div>

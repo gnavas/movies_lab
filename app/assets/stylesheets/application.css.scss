@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "bootswatch/darkly/variables";
+@import "bootswatch/cerulean/variables";
 @import "bootstrap";
 body { padding-top: 60px; }
-@import "bootswatch/darkly/bootswatch";
+@import "bootswatch/cerulean/bootswatch";
